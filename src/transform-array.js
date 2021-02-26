@@ -14,7 +14,7 @@ module.exports = function transform(arr) {
         break;
 
       case '--discard-prev':
-        if (i !== 0 && arr[i - 2] != '--discard-next') result.pop();
+        if (i !== 0 && arr[i - 2] !== '--discard-next') result.pop();
         break;
 
       case '--double-next':
@@ -22,7 +22,7 @@ module.exports = function transform(arr) {
         break;
 
       case '--double-prev':
-        if (i !== 0 && arr[i - 2] != '--discard-next')  result.push(arr[i-1]);
+        if (i !== 0 && arr[i - 2] !== '--discard-next')  result.push(arr[i-1]);
         break;
 
       default:

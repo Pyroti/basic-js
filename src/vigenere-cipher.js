@@ -6,16 +6,14 @@ class VigenereCipheringMachine {
   }
 
   encrypt(message, key) {
-    if (!message || !key) {
-      throw new Error('Error');
-    }
+    if (!message || !key) throw new Error('Error');
+    
     let result = '';
-    let j = 0;
     
     key = key.toUpperCase();
     message = message.toUpperCase();
 
-    for (let i = 0; i < message.length; i++){
+    for (let i = 0, j = 0; i < message.length; i++){
       if (j == key.length) j = 0;
       if (message.charCodeAt(i) >= 65 && message.charCodeAt(i) <= 90) {
         result += String.fromCharCode(((message.charCodeAt(i) - 65) + (key.charCodeAt(j) - 65)) % 26 + 65);
@@ -29,16 +27,14 @@ class VigenereCipheringMachine {
   } 
 
   decrypt(message, key) {
-    if (!message || !key) {
-      throw new Error('Error');      
-    }
+    if (!message || !key) throw new Error('Error');      
+    
     let result = '';
-    let j = 0;
 
     key = key.toUpperCase();
     message = message.toUpperCase();
 
-    for (let i = 0; i < message.length; i++){
+    for (let i = 0, j = 0; i < message.length; i++){
       if (j == key.length) j = 0;
       if (message.charCodeAt(i) >= 65 && message.charCodeAt(i) <= 90) {
         result += String.fromCharCode(((message.charCodeAt(i) - 65) - (key.charCodeAt(j) - 65) + 26) % 26 + 65);
